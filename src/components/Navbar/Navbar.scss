@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    padding: 0 2rem;
+    height: 5rem;
+    background-color: #66aaff;
+    color: #ffffff;
+    &__branding {
+        font-size: 2rem;
+        font-weight: bolder;
+        text-decoration: none;
+        color: inherit;
+    }
+    @media (max-width: 600px) {
+        padding: 0 1rem;
+        &__branding {
+            font-size: 1.5rem;
+        }
+    }
+    &__account {
+        background-color: red;
+    }
+
+}
