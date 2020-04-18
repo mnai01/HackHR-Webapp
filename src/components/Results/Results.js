@@ -7,7 +7,7 @@ const Results = (props) => {
     <div className={classes.results}>
       <ul>
         {props.data.map((res) => (
-          <Result className={classes.result} result={res} />
+          <Result result={res} />
         ))}
       </ul>
     </div>
