@@ -14,22 +14,32 @@
         font-weight: bolder;
         text-decoration: none;
         color: inherit;
+        &:hover {
+            color: #dddddd;
+        }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         padding: 0 1rem;
         .branding {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
     }
     .newfence {
         padding: .5rem;
-        border: .25rem solid #ffffff;
+        border: .25rem solid currentColor;
         border-radius: 10rem;
         color: #ffffff;
+        line-height: 1;
+        white-space: nowrap;
+        &:hover {
+            text-decoration: none;
+            color: #dddddd;
+        }
     }
     .account {
         margin-left: 1rem;
         font-style: italic;
+        
     }
 
 }

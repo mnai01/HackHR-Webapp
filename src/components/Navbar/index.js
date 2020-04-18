@@ -12,7 +12,7 @@ const Navbar = () => {
       <Link to="/" className={classes.branding}>
         Hack-HR Population
       </Link>
-      <Link to="/newfence" className={classes.newfence}>+ Create New Fence</Link>
+      <Link to="/newfence" className={classes.newfence}>+ Create <wbr></wbr>New Fence</Link>
 
       <div className={classes.account}>
         {user ? `Logged in as ${user.name}` : `<a href='/login'>Login</a>`}
