@@ -8,7 +8,8 @@
     height: 5rem;
     background-color: #66aaff;
     color: #ffffff;
-    &__branding {
+    .branding {
+        flex-grow: 10;
         font-size: 2rem;
         font-weight: bolder;
         text-decoration: none;
@@ -16,12 +17,19 @@
     }
     @media (max-width: 600px) {
         padding: 0 1rem;
-        &__branding {
+        .branding {
             font-size: 1.5rem;
         }
     }
-    &__account {
-        background-color: red;
+    .newfence {
+        padding: .5rem;
+        border: .25rem solid #ffffff;
+        border-radius: 10rem;
+        color: #ffffff;
+    }
+    .account {
+        margin-left: 1rem;
+        font-style: italic;
     }
 
 }

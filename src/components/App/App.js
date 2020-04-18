@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "../Navbar/Navbar.js";
+import Navbar from "../Navbar";
 import MainPage from "../MainPage/MainPage";
 import AddGeofencePage from "../AddGeofencePage/AddGeofencePage";
 // import Map from '../Map/Map.js';
@@ -76,7 +76,7 @@ function App() {
           <Route exact path="/">
             <MainPage People={People} Geofence={Geofence} />
           </Route>
-          <Route exact path="/test">
+          <Route exact path="/newfence">
             <AddGeofencePage />
           </Route>
         </Switch>
