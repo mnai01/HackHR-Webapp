@@ -44,14 +44,22 @@ const AddGeofencePage = () => {
               placeholder="Enter here"
               onKeyUp={handlersetName}
             />
+          </FormGroup>
+          <FormGroup>
             <Label>Select Radius (meters)</Label>
-            <Input type="number" name="select" onKeyUp={handlersetRadius}>
-              <option>50</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Input>
+            <Input
+              type="number"
+              placeholder="Enter here"
+              onKeyUp={handlersetRadius}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Enter Capacity Limit</Label>
+            <Input type="number" placeholder="Enter here"></Input>
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleText">Text Area</Label>
+            <Input type="textarea" name="text" id="exampleText" />
           </FormGroup>
         </Form>
       </div>
