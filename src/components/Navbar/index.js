@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className={classes.navbar}>
       <Link to="/" className={classes.branding}>
-        Hack-HR Population
+        SafeDistance
       </Link>
       <Link to="/newfence" className={classes.newfence}>+ Create <wbr></wbr>New Fence</Link>
 
