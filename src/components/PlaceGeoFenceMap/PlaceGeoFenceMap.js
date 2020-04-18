@@ -5,7 +5,6 @@ import DeckGL from "@deck.gl/react";
 import { ScatterplotLayer, GeoJsonLayer } from "@deck.gl/layers";
 import classes from "./PlaceGeoFenceMap.module.scss";
 import Geocoder from "react-map-gl-geocoder";
-import { Button } from "reactstrap";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 const MAPBOX_TOKEN =
@@ -26,11 +25,19 @@ const Map = (props) => {
   const [searchResultLayer, setSearchResultLayer] = useState({ Layer: null });
   const [Layers, setLayers] = useState([]);
   const [clickLatLng, setClick] = useState(null);
+  // const [Radius, setRadius] = useState({
+  //   rad: 1000,
+  // });
+
+  // const handlersetRadius = (e) => {
+  //   setRadius({ rad: parseInt(e.target.value) });
+  // };
 
   const onClick = (event) => {
     console.log(event);
     setClick(event.lngLat);
   };
+
   const DATA_URL =
     "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/scatterplot/manhattan.json"; // eslint-disable-line
 
@@ -83,6 +90,7 @@ const Map = (props) => {
       }),
     });
   };
+
   const handleGeocoderViewportChange = (viewport) => {
     const geocoderDefaultOverrides = { transitionDuration: 1 }; //DOESNT DO ANYTHING
     setViewport(viewport, geocoderDefaultOverrides);
@@ -91,18 +99,18 @@ const Map = (props) => {
   const addGeofrence = () => {
     setLayers([
       new ScatterplotLayer({
-        id: "scatterplot-layer",
-        data: viewport,
+        id: "place-scatterplot-layer",
+        data: props.radius,
         pickable: true,
-        opacity: 0.8,
+        opacity: 0.1,
         stroked: true,
         filled: true,
         radiusScale: 1,
         radiusMinPixels: 4,
-        radiusMaxPixels: 5,
+        radiusMaxPixels: 500,
         lineWidthMinPixels: 1,
         getPosition: [viewport.longitude, viewport.latitude],
-        getRadius: 0.25,
+        getRadius: props.radius.rad,
         getFillColor: [0, 140, 0],
         getLineColor: [0, 0, 0],
       }),
