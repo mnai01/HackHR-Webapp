@@ -179,7 +179,6 @@ const Map = (props) => {
           controller={true}
         />
       </ReactMapGL>
-      <button onClick={addGeofrence}>Create Geofence</button>
     </div>
   );
 };
