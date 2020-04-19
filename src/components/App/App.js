@@ -79,10 +79,10 @@ function App() {
           <Route exact path="/">
             <MainPage People={People} Geofence={Geofence} />
           </Route>
-          <Route exact path="/newfence">
+          <Route path="/newfence">
             <AddGeofencePage />
           </Route>
-          <Route exact path="/test">
+          <Route path="/login">
             <MainLogReg />
           </Route>
         </Switch>

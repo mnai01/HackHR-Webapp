@@ -6,7 +6,6 @@ const Navbar = () => {
   let user = {
     name: "company",
   };
-
   return (
     <nav className={classes.navbar}>
       <Link to="/" className={classes.branding}>
@@ -15,9 +14,8 @@ const Navbar = () => {
       <Link to="/newfence" className={classes.newfence}>
         + Create <wbr></wbr>New Fence
       </Link>
-      <Link to="/test">Login</Link>
       <div className={classes.account}>
-        {user ? `Logged in as ${user.name}` : `<a href='/login'>Login</a>`}
+        {user ? `Logged in as ${user.name}` : <Link to="/login">Login/Signup</Link>}
       </div>
     </nav>
   );
