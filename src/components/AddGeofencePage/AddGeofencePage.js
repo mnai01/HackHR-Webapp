@@ -14,21 +14,12 @@ import {
 import classes from "./AddGeofencePage.module.css";
 
 const AddGeofencePage = () => {
-  const [Name, setName] = useState(null);
-  const [Limit, setLimit] = useState(0);
-  const [Description, setDescription] = useState("");
-  const [Radius, setRadius] = useState({ rad: 1000 });
+  const [Radius, setRadius] = useState({ rad: 0 });
+  const [color, setColor] = useState({ rgb: { r: 250, g: 250, b: 250 } });
 
-  const handlersetName = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlersetLimit = (e) => {
-    setLimit(e.target.value);
-  };
-
-  const handlersetDescription = (e) => {
-    setDescription(e.target.value);
+  const handleChangeColor = (e) => {
+    setColor(e);
+    console.log(e.rgb.r);
   };
 
   const handlersetRadius = (e) => {
@@ -38,12 +29,14 @@ const AddGeofencePage = () => {
   return (
     <div className={classes.container}>
       <div className={classes.mapContainer}>
-        <PlaceGeoFenceMap radius={Radius} />
+        <PlaceGeoFenceMap color={color} radius={Radius} />
       </div>
       <div className={classes.ResultsWrapper}>
         <PlaceGeoFenceForm
+          color={color}
+          radius={Radius}
+          colorChange={handleChangeColor}
           setRadius={handlersetRadius}
-          setName={handlersetName}
         />
       </div>
     </div>
