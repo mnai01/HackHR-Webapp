@@ -6,12 +6,12 @@ import Cookies from "js-cookie";
 const Navbar = () => {
   return (
     <nav className={classes.navbar}>
-
-      {Cookies.get("Company") ? (
+      {Cookies.get("Company") != "" ? (
         <React.Fragment>
           <div>
-
-            <Link to="/" className={classes.branding}>SafeDistance</Link>
+            <Link to="/" className={classes.branding}>
+              SafeDistance
+            </Link>
             <div className={classes.account}>
               {`Logged in as ${Cookies.get("Company")}`}
             </div>
@@ -21,14 +21,17 @@ const Navbar = () => {
               + Create <wbr></wbr>New Fence
             </Link>
           </div>
-
         </React.Fragment>
       ) : (
-          <React.Fragment>
-            <Link to="/" className={classes.branding}>SafeDistance</Link>
-            <Link to="/Login" className={classes.login}>Login/Signup</Link>
-          </React.Fragment>
-        )}
+        <React.Fragment>
+          <Link to="/" className={classes.branding}>
+            SafeDistance
+          </Link>
+          <Link to="/Login" className={classes.login}>
+            Login/Signup
+          </Link>
+        </React.Fragment>
+      )}
     </nav>
   );
 };

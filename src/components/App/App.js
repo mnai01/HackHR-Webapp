@@ -123,8 +123,10 @@ function App() {
       Longitude: -73.427621,
     },
   ]);
+  Cookies.set("Company", Cookies.get("Company"));
   return (
     <div>
+      {Cookies.get("Company") == "undefined" && Cookies.set("Company", "")}
       <Router>
         <Navbar />
         <Switch>
