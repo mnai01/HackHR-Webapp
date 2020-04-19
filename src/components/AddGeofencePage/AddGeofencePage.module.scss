@@ -3,7 +3,8 @@
   grid-template-columns: 50% 50%;
   grid-template-areas:
     'map form';
-  padding: 2rem 2rem;
+  margin: 2rem 2rem;
+  padding: 0;
   max-height: 100vh;
   max-height: calc(100vh - 5rem);
   overflow-y: auto;
@@ -15,7 +16,7 @@
       'map'
       'form';
     max-height: unset;
-    padding: 2rem 1rem;
+    margin: 2rem 1rem;
   }
 }
 
