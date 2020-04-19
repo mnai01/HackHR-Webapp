@@ -11,7 +11,7 @@ import {
   FormText,
   Col,
 } from "reactstrap";
-import classes from "./AddGeofencePage.module.css";
+import classes from "./AddGeofencePage.module.scss";
 
 const AddGeofencePage = () => {
   const [Name, setName] = useState(null);
@@ -36,11 +36,11 @@ const AddGeofencePage = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <div className={classes.mapContainer}>
+    <div className={classes.main_container}>
+      <div className={classes.map_container}>
         <PlaceGeoFenceMap radius={Radius} />
       </div>
-      <div className={classes.ResultsWrapper}>
+      <div className={classes.form_wrapper}>
         <PlaceGeoFenceForm
           setRadius={handlersetRadius}
           setName={handlersetName}

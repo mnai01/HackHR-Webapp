@@ -8,10 +8,8 @@ const PlaceGeoFenceForm = (props) => {
   return (
     <div>
       <Form className={classes.addFenceForm}>
-        <h1>
-          Customize and place a geofence, Once you're ready send it to the
-          database!
-        </h1>
+        <h2>Add new Fence</h2>
+        <p>Customize and place a geofence, Once you're ready send it to the database!</p>
         <FormGroup>
           <Label>Name of Fence</Label>
           <Input type="text" placeholder="Enter here" onKeyUp={props.setName} />

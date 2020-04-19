@@ -151,11 +151,9 @@ const Map = (props) => {
           layers={[Layers]}
           controller={true}
         />
-        <h1 className={classes.arrow}>+</h1>
+        <div className={classes.arrow}>+</div>
       </ReactMapGL>
-      <div className={classes.createButton}>
-        <Button onClick={addGeofrence}>Test geofence size</Button>
-      </div>
+      <Button onClick={addGeofrence} className={classes.button}>Test geofence size</Button>
     </div>
   );
 };
