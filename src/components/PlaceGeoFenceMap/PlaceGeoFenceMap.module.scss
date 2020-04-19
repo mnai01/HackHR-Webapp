@@ -11,7 +11,7 @@
   font-weight: bolder;
   justify-content: center;
   margin-top: calc((100vh - 5rem) / 2 - 2rem); // magic number
-  margin-left: calc(25vw - 1.4rem); // magic number
+  margin-left: calc(25vw - 2.5rem); // magic number
 }
 
 .button {
@@ -23,10 +23,10 @@
 
 @media (max-width: 800px) {
   .map {
-    height: 50vh;
+    height: 400px;
   }
   .arrow {
-    margin-top: 21vh; // magic number
-    margin-left: calc(50vw - 1.5rem); // magic number
+    margin-top: calc(200px - 1.9rem); // magic number
+    margin-left: calc(50vw - 2.55rem); // magic number
   }
 }
