@@ -17,7 +17,7 @@
     text-decoration: none;
     color: inherit;
     &:hover {
-      color: #c0c0c0;
+      color: #00CED1;
     }
   }
   @media (max-width: 800px) {
@@ -30,7 +30,6 @@
     }
   }
   .newfence {
-    margin-left: 1rem;
     padding: 0.5rem;
     border: 0.25rem solid currentColor;
     border-radius: 10rem;
@@ -38,24 +37,23 @@
     line-height: 1;
     white-space: nowrap;
     &:hover {
-      color: #c0c0c0;
+      color: #00CED1;
       text-decoration: none;
     }
   }
   .account {
-    margin-left: 1rem;
-    font-style: italic;
-    a {
-      padding: 0.5rem;
-      border: 0.25rem solid currentColor;
-      border-radius: 10rem;
-      color: inherit;
-      line-height: 1;
-      white-space: nowrap;
-      &:hover {
-        color: #dddddd;
-        text-decoration: none;
-      }
+    color: #00CED1;
+  }
+  .login {
+    padding: 0.5rem;
+    border: 0.25rem solid currentColor;
+    border-radius: 10rem;
+    color: inherit;
+    line-height: 1;
+    white-space: nowrap;
+    &:hover {
+      color: #00CED1;
+      text-decoration: none;
     }
   }
 }
