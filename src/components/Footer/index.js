@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <footer className={classes.footer}>
             <div className={classes.about}>
-                <h2>SafeDistance</h2>
-                <p>Safe distance is an app that helps monitor and promotor social distancing protocols to provide a safer and healthier workplace environment</p>
+                <h2>Safe Distance</h2>
+                <p>Safe Distance is an app that helps monitor and promote social distancing protocols to provide a safer and healthier workplace environment.</p>
             </div>
             <div className={classes.repos}>
                 <h3>Who Are We?</h3>
