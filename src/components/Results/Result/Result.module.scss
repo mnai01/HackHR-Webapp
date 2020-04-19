@@ -15,4 +15,12 @@
     .amount {
         float: right;
     }
+    .circle {
+        display: inline-block;
+        margin-left: .5rem;
+        width: .7em;
+        height: .7em;
+        border: 1px solid #aaaaaa;
+        border-radius: 50%;
+    }
 }
