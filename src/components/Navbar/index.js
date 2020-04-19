@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className={classes.navbar}>
 
-      {Cookies.get("Company") != "" ? (
+      {Cookies.get("Company") && Cookies.get("Company") != undefined ? (
         <React.Fragment>
           <div>
 
