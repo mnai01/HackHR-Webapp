@@ -1,60 +1,61 @@
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    padding: 0 2rem;
-    height: 5rem;
-    background-color: #66aaff;
-    color: #ffffff;
-    .branding {
-        flex-grow: 10;
-        font-size: 2rem;
-        font-weight: bolder;
-        text-decoration: none;
-        color: inherit;
-        &:hover {
-            color: #dddddd;
-        }
-    }
-    @media (max-width: 800px) {
-        padding: 0 1rem;
-        .branding {
-            font-size: 1.2rem;
-        }
-        * {
-            font-size: 12px;
-        }
-    }
-    .newfence {
-        margin-left: 1rem;
-        padding: .5rem;
-        border: .25rem solid currentColor;
-        border-radius: 10rem;
-        color: #ffffff;
-        line-height: 1;
-        white-space: nowrap;
-        &:hover {
-            color: #dddddd;
-            text-decoration: none;
-        }
-    }
-    .account {
-        margin-left: 1rem;
-        font-style: italic;
-        a {
-            padding: .5rem;
-            border: .25rem solid currentColor;
-            border-radius: 10rem;
-            color: inherit;
-            line-height: 1;
-            white-space: nowrap;
-            &:hover {
-                color: #dddddd;
-                text-decoration: none;
-            }
-        }
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  padding: 0 2rem;
+  height: 5rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
+  background-color: #f5f5f5;
+  color: #2c2c2c;
+  .branding {
+    flex-grow: 10;
+    font-size: 2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: #c0c0c0;
+    }
+  }
+  @media (max-width: 800px) {
+    padding: 0 1rem;
+    .branding {
+      font-size: 1.2rem;
+    }
+    * {
+      font-size: 12px;
+    }
+  }
+  .newfence {
+    margin-left: 1rem;
+    padding: 0.5rem;
+    border: 0.25rem solid currentColor;
+    border-radius: 10rem;
+    color: #2c2c2c;
+    line-height: 1;
+    white-space: nowrap;
+    &:hover {
+      color: #c0c0c0;
+      text-decoration: none;
+    }
+  }
+  .account {
+    margin-left: 1rem;
+    font-style: italic;
+    a {
+      padding: 0.5rem;
+      border: 0.25rem solid currentColor;
+      border-radius: 10rem;
+      color: inherit;
+      line-height: 1;
+      white-space: nowrap;
+      &:hover {
+        color: #dddddd;
+        text-decoration: none;
+      }
+    }
+  }
 }
