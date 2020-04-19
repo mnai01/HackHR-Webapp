@@ -18,6 +18,7 @@ const Map = (props) => {
     latitude: 30.83329635273188,
     longitude: -44.68585719149834,
     zoom: 2,
+    maxZoom: 21,
     bearing: 0,
     pitch: 0,
   });
@@ -108,7 +109,7 @@ const Map = (props) => {
         filled: true,
         radiusScale: 1,
         radiusMinPixels: 4,
-        radiusMaxPixels: 500,
+        radiusMaxPixels: 9000,
         lineWidthMinPixels: 1,
         getPosition: [viewport.longitude, viewport.latitude],
         getRadius: props.radius.rad,
@@ -153,7 +154,9 @@ const Map = (props) => {
         />
         <div className={classes.arrow}>+</div>
       </ReactMapGL>
-      <Button onClick={addGeofrence} className={classes.button}>Test geofence size</Button>
+      <Button onClick={addGeofrence} className={classes.button}>
+        Test geofence size
+      </Button>
     </div>
   );
 };

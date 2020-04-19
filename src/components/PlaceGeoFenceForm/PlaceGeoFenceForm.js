@@ -44,7 +44,10 @@ const PlaceGeoFenceForm = (props) => {
     <div>
       <Form className={classes.addFenceForm}>
         <h2>Add new Fence</h2>
-        <p>Customize and place a geofence, Once you're ready send it to the database!</p>
+        <p>
+          Customize and place a geofence, Once you're ready send it to the
+          database!
+        </p>
         <FormGroup>
           <Label>Name of Fence</Label>
           <Input
@@ -56,7 +59,7 @@ const PlaceGeoFenceForm = (props) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Select Radius (meters)</Label>
+          <Label>Set a Radius</Label>
           <Input type="number" placeholder="0" onKeyUp={props.setRadius} />
         </FormGroup>
         <FormGroup>
