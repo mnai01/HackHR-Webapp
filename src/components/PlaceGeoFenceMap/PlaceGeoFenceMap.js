@@ -112,7 +112,7 @@ const Map = (props) => {
         lineWidthMinPixels: 1,
         getPosition: [viewport.longitude, viewport.latitude],
         getRadius: props.radius.rad,
-        getFillColor: [0, 140, 0],
+        getFillColor: [props.color.rgb.r, props.color.rgb.g, props.color.rgb.b],
         getLineColor: [0, 0, 0],
       }),
     ]);
