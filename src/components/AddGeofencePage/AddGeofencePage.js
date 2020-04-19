@@ -11,11 +11,11 @@ import {
   FormText,
   Col,
 } from "reactstrap";
-import classes from "./AddGeofencePage.module.css";
+import classes from "./AddGeofencePage.module.scss";
 
 const AddGeofencePage = () => {
   const [Radius, setRadius] = useState({ rad: 0 });
-  const [color, setColor] = useState({ rgb: { r: 250, g: 250, b: 250 } });
+  const [Color, setColor] = useState({ rgb: { r: 250, g: 250, b: 250 } });
 
   const handleChangeColor = (e) => {
     setColor(e);
@@ -27,13 +27,13 @@ const AddGeofencePage = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <div className={classes.mapContainer}>
-        <PlaceGeoFenceMap color={color} radius={Radius} />
+    <div className={classes.main_container}>
+      <div className={classes.map_container}>
+        <PlaceGeoFenceMap color={Color} radius={Radius} />
       </div>
-      <div className={classes.ResultsWrapper}>
+      <div className={classes.form_wrapper}>
         <PlaceGeoFenceForm
-          color={color}
+          color={Color}
           radius={Radius}
           colorChange={handleChangeColor}
           setRadius={handlersetRadius}

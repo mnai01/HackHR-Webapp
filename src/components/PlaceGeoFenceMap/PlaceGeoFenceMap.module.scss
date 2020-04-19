@@ -1,11 +1,32 @@
 .map {
-  height: 100%;
-  width: 100%;
+  position: relative;
+  height: calc(100vh - 5rem);
 }
 
 .arrow {
+  display: inline-block;
+  line-height: 1;
   color: #fff;
+  font-size: 3rem;
+  font-weight: bolder;
   justify-content: center;
-  margin-top: 22.5vh;
-  margin-left: 48.85%;
+  margin-top: calc((100vh - 5rem) / 2 - 2rem); // magic number
+  margin-left: calc(25vw - 1.4rem); // magic number
+}
+
+.button {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 800px) {
+  .map {
+    height: 50vh;
+  }
+  .arrow {
+    margin-top: 21vh; // magic number
+    margin-left: calc(50vw - 1.5rem); // magic number
+  }
 }
