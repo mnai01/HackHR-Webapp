@@ -5,6 +5,7 @@ import DeckGL from "@deck.gl/react";
 import { ScatterplotLayer, GeoJsonLayer } from "@deck.gl/layers";
 import classes from "./PlaceGeoFenceMap.module.scss";
 import Geocoder from "react-map-gl-geocoder";
+import { Button } from "reactstrap";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 const MAPBOX_TOKEN =
@@ -152,7 +153,9 @@ const Map = (props) => {
         />
         <h1 className={classes.arrow}>+</h1>
       </ReactMapGL>
-      <button onClick={addGeofrence}>Create Geofence</button>
+      <div className={classes.createButton}>
+        <Button onClick={addGeofrence}>Test geofence size</Button>
+      </div>
     </div>
   );
 };
