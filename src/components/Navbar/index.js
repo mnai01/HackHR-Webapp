@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Navbar.module.scss";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   let user = {
@@ -15,7 +16,11 @@ const Navbar = () => {
         + Create <wbr></wbr>New Fence
       </Link>
       <div className={classes.account}>
-        {user ? `Logged in as ${user.name}` : <Link to="/login">Login/Signup</Link>}
+        {Cookies.get("Company") != "" ? (
+          `Logged in as ${Cookies.get("Company")}`
+        ) : (
+          <Link to="/Login">Login/Signup</Link>
+        )}
       </div>
     </nav>
   );

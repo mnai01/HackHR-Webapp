@@ -5,6 +5,7 @@ import MainPage from "../MainPage/MainPage";
 import AddGeofencePage from "../AddGeofencePage/AddGeofencePage";
 import Footer from "../Footer";
 import MainLogReg from "../Auth/main";
+import Cookies from "js-cookie";
 
 // import Map from '../Map/Map.js';
 // import List from '../List/List.js';
@@ -77,12 +78,16 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <MainPage People={People} Geofence={Geofence} />
+            {Cookies.get("Company") != "" ? (
+              <MainPage People={People} Geofence={Geofence} />
+            ) : (
+              <MainLogReg />
+            )}
           </Route>
           <Route path="/newfence">
             <AddGeofencePage />
           </Route>
-          <Route path="/login">
+          <Route path="/Login">
             <MainLogReg />
           </Route>
         </Switch>

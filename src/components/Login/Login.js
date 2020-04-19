@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import loginImg from "./login.svg";
 import axios from "axios";
+import Cookies from "js-cookie";
+
 // import Cookies from "js-cookie";
 
 let url =
@@ -11,6 +13,10 @@ const Login = (props) => {
   const [password, setPassword] = useState(null);
 
   const loginHandler = () => {
+    {
+      window.location.reload();
+    }
+    Cookies.set("Company", login, { expires: 7 });
     // axios
     //   .get(url + login + "/" + password)
     //   .then((res) => {
@@ -26,8 +32,8 @@ const Login = (props) => {
   };
 
   const loginChangeHandler = (e) => {
-    // console.log(e.target.value);
-    // setLogin(e.target.value);
+    console.log(e.target.value);
+    setLogin(e.target.value);
   };
 
   const passwordChangeHandler = (e) => {
@@ -44,7 +50,7 @@ const Login = (props) => {
         </div>
         <div className="form">
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Company</label>
             <input
               type="text"
               name="username"
