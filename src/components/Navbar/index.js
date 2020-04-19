@@ -4,7 +4,7 @@ import classes from "./Navbar.module.scss";
 
 const Navbar = () => {
   let user = {
-    name: 'company',
+    name: "company",
   };
 
   return (
@@ -12,8 +12,10 @@ const Navbar = () => {
       <Link to="/" className={classes.branding}>
         SafeDistance
       </Link>
-      <Link to="/newfence" className={classes.newfence}>+ Create <wbr></wbr>New Fence</Link>
-
+      <Link to="/newfence" className={classes.newfence}>
+        + Create <wbr></wbr>New Fence
+      </Link>
+      <Link to="/test">Login</Link>
       <div className={classes.account}>
         {user ? `Logged in as ${user.name}` : `<a href='/login'>Login</a>`}
       </div>

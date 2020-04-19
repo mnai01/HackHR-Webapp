@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../Navbar";
 import MainPage from "../MainPage/MainPage";
 import AddGeofencePage from "../AddGeofencePage/AddGeofencePage";
-import Footer from '../Footer';
+import Footer from "../Footer";
+import MainLogReg from "../Auth/main";
+
 // import Map from '../Map/Map.js';
 // import List from '../List/List.js';
 
@@ -75,13 +77,16 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <MainPage People={People} Geofence={Geofence}/>
+            <MainPage People={People} Geofence={Geofence} />
           </Route>
           <Route exact path="/newfence">
             <AddGeofencePage />
           </Route>
+          <Route exact path="/test">
+            <MainLogReg />
+          </Route>
         </Switch>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
