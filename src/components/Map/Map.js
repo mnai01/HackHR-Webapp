@@ -7,12 +7,21 @@ import classes from "./Map.module.scss";
 import Geocoder from "react-map-gl-geocoder";
 import { Button } from "reactstrap";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import hexRgb from "hex-rgb";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoibW5haSIsImEiOiJjazk1ZjhoNDIwOGl3M2VtZ3czMTBobHNhIn0.1OWA8oisc6ZoxSydY2_I4w"; // Set your mapbox token here
 let mapRef = React.createRef();
 
 const Map = (props) => {
+  let rgb;
+  try {
+    rgb = hexRgb(props.data.color);
+  } catch (error) {
+    rgb = { red: 0, blue: 0, green: 0 };
+    console.log(error);
+  }
+
   const [viewport, setViewport] = useState({
     container: "map",
     latitude: 25,
@@ -37,9 +46,9 @@ const Map = (props) => {
       radiusMinPixels: 10,
       radiusMaxPixels: 2000,
       lineWidthMinPixels: 1,
-      getPosition: (d) => [d.Longitude, d.Latitude],
-      getRadius: (d) => d.Radius,
-      getFillColor: (d) => [d.RGB.r, d.RGB.g, d.RGB.b],
+      getPosition: (d) => [d.longitude, d.latitude],
+      getRadius: (d) => d.radius,
+      getFillColor: (rgb) => [rgb.red, rgb.green, rgb.blue],
       getLineColor: (d) => [0, 0, 0],
     }),
     new ScatterplotLayer({
