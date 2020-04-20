@@ -23,6 +23,10 @@ Built with React
 Built with React Native and Expo.
 - When "start tracking" button is pressed, device will periodically send location data to the server via REST API
 
+## Raspi Backend
+Analyzes the number of wifi-enabled devices within a certain radius of the raspberry pi microcomputer.
+[View working prototype repo](https://github.com/mnai01/HackHR-RasPi-Backend)
+
 
 ## Backend API
 The backend consists of NodeJS, Express, and PostgreSQL.
