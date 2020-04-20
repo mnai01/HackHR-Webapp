@@ -14,13 +14,16 @@ import axios from "axios";
 import classes from "./PlaceGeoFenceForm.module.css";
 import { HuePicker } from "react-color";
 
-const URL = "";
+const URL =
+  "https://cors-anywhere.herokuapp.com/https://hack-hr.herokuapp.com/api/fences/";
 
 const PlaceGeoFenceForm = (props) => {
   const [Name, setName] = useState(null);
   const [Limit, setLimit] = useState(0);
   const [Description, setDescription] = useState("");
   const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   // const [color, setColor] = useState("#ffff");
 
   // const handleChangeComplete = (e) => {
@@ -28,17 +31,40 @@ const PlaceGeoFenceForm = (props) => {
   // };
 
   const onSendPress = async () => {
-    // let rbg = props.color;
-    // let radius = props.radius;
-    // await axios
-    //   .post(URL)
-    //   .then((response) => {})
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    setLoading(true);
+    console.log(props.coords);
+    let color = props.color;
+    let radius = props.radius.rad;
+    console.log(
+      URL +
+        `?cmpid=2&name=${Name}&descr=${Description}&long=${props.coords[1]}&lat=${props.coords[0]}&rad=${radius}&clr=${color.hex}&cap=${Limit}`
+    );
+    await axios
+      .post(
+        URL +
+          `?cmpid=2&name=${Name}&descr=${Description}&long=${props.coords[1]}&lat=${props.coords[0]}&rad=${radius}&clr=${color.hex}&cap=${Limit}`,
+        {
+          headers: {
+            "access-control-allow-origin": "*",
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     toggle();
   };
   const toggle = () => setModal(!modal);
+
+  const toggleBoth = () => {
+    setLoading(false);
+    setModal(!modal);
+  };
 
   return (
     <div>
@@ -86,22 +112,36 @@ const PlaceGeoFenceForm = (props) => {
           />
         </FormGroup>
         <FormGroup>
-          <Button onClick={toggle}>Save to database</Button>
+          <Button onClick={toggleBoth}>Save to database</Button>
         </FormGroup>
       </Form>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>WARNING</ModalHeader>
-        <ModalBody>
-          Are you sure you want to send these setting to the database? Make sure
-          you verify that all information is set correctly.
-        </ModalBody>
+        {loading ? (
+          <ModalBody>Sending... Please wait, this may take a minute </ModalBody>
+        ) : (
+          <ModalBody>
+            Are you sure you want to send these setting to the database? Make
+            sure you verify that all information is set correctly.
+          </ModalBody>
+        )}
         <ModalFooter>
-          <Button color="primary" onClick={onSendPress}>
-            Send to database
-          </Button>
-          <Button color="secondary" onClick={toggle}>
-            Cancel
-          </Button>
+          {loading ? (
+            <Button color="primary" onClick={toggle}>
+              Exit
+            </Button>
+          ) : (
+            <Button color="primary" onClick={onSendPress}>
+              Send to database
+            </Button>
+          )}
+          {loading ? (
+            ""
+          ) : (
+            <Button color="secondary" onClick={toggle}>
+              Cancel
+            </Button>
+          )}
         </ModalFooter>
       </Modal>
     </div>
