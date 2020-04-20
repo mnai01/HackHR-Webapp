@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "deck.gl": "^8.1.1",
+    "hex-rgb": "^4.1.0",
     "js-cookie": "^2.2.1",
     "react": "^16.13.1",
     "react-color": "^2.17.3",
