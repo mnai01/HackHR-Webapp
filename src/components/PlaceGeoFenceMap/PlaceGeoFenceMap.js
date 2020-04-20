@@ -99,6 +99,7 @@ const Map = (props) => {
   };
 
   const addGeofrence = () => {
+    props.handleCoords([viewport.latitude, viewport.longitude]);
     setLayers([
       new ScatterplotLayer({
         id: "place-scatterplot-layer",
