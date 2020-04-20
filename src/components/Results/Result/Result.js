@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import classes from "./Result.module.scss";
-
-
+import hexRgb from "hex-rgb";
 
 const Result = (props) => {
-  const red = props.result.RGB.r;
-  const green = props.result.RGB.g;
-  const blue = props.result.RGB.b;
+  const rgb = hexRgb(props.result.color);
   return (
     <li className={classes.result}>
-      <span className={classes.amount}>{props.result.LiveCount} / {props.result.LimitRestriction}</span>
-      <h3>{props.result.Name}<span className={classes.circle} style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></span></h3>
-      <p>{props.result.Description}</p>
+      <span className={classes.amount}>
+        {props.result.live_count} / {props.result.capacity}
+      </span>
+      <h3>
+        {props.result.fence_name}
+        <span
+          className={classes.circle}
+          style={{
+            backgroundColor: `rgb(${rgb.red}, ${rgb.green}, ${rgb.blue})`,
+          }}
+        ></span>
+      </h3>
+      <p>{props.result.description}</p>
     </li>
   );
 };
