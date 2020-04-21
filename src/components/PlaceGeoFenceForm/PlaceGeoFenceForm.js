@@ -37,12 +37,12 @@ const PlaceGeoFenceForm = (props) => {
     let radius = props.radius.rad;
     console.log(
       URL +
-        `?cmpid=2&name=${Name}&descr=${Description}&long=${props.coords[1]}&lat=${props.coords[0]}&rad=${radius}&clr=${color.hex}&cap=${Limit}`
+        `?company_id=2&fence_name=${Name}&description=${Description}&longitude=${props.coords[1]}&latitude=${props.coords[0]}&radius=${radius}&color=${color.hex}&capacity=${Limit}`
     );
     await axios
       .post(
         URL +
-          `?cmpid=2&name=${Name}&descr=${Description}&long=${props.coords[1]}&lat=${props.coords[0]}&rad=${radius}&clr=${color.hex}&cap=${Limit}`,
+          `?company_id=2&fence_name=${Name}&description=${Description}&longitude=${props.coords[1]}&latitude=${props.coords[0]}&radius=${radius}&color=${color.hex}&capacity=${Limit}`,
         {
           headers: {
             "access-control-allow-origin": "*",
