@@ -14,12 +14,32 @@ const MAPBOX_TOKEN =
 let mapRef = React.createRef();
 
 const Map = (props) => {
-  let rgb;
-  try {
-    rgb = hexRgb(props.data.color);
-  } catch (error) {
-    rgb = { red: 0, blue: 0, green: 0 };
-    console.log(error);
+  // console.log("DDDDDDDDDDDDDDDDDDDDDDDD", props.data);
+  let rgb = [];
+  // try {
+  //   rgb = hexRgb(props.data.color);
+  // } catch (error) {
+  //   rgb = { red: 255, blue: 0, green: 0 };
+  //   console.log(error);
+  // }
+
+  // try {
+  //   console.log("DDDDDDDDDDDDDDDDDDDDDDDD", props.data[0].color);
+  // } catch (error) {
+  //   console.log("DDDDDDDDDDDDDDDDDDDDDDDD", props.data[0]);
+  // }
+
+  if (props.data !== undefined && props.data.length !== 0) {
+    try {
+      props.data.map((res) => {
+        hexRgb(res.color);
+        rgb.push(hexRgb(res.color));
+      });
+      console.log("DDDDDDDDDDDDDDDDDDDDDDDD", rgb);
+    } catch (error) {
+      rgb = { red: 255, blue: 0, green: 0 };
+      console.log(error);
+    }
   }
 
   const [viewport, setViewport] = useState({
@@ -32,9 +52,8 @@ const Map = (props) => {
     pitch: 0,
   });
 
-  const [data, setData] = useState(props.data);
   const [searchResultLayer, setSearchResultLayer] = useState({ Layer: null });
-  const [Layers, setLayers] = useState([
+  const Layers = [
     new ScatterplotLayer({
       id: "scatterplot-layer1",
       data: props.data,
@@ -67,7 +86,41 @@ const Map = (props) => {
       getFillColor: (d) => [0, 140, 0],
       getLineColor: (d) => [0, 0, 0],
     }),
-  ]);
+  ];
+  // const [Layers, setLayers] = useState([
+  //   new ScatterplotLayer({
+  //     id: "scatterplot-layer1",
+  //     data: props.data.fence,
+  //     pickable: true,
+  //     opacity: 0.15,
+  //     stroked: true,
+  //     filled: true,
+  //     radiusScale: 1,
+  //     radiusMinPixels: 10,
+  //     radiusMaxPixels: 2000,
+  //     lineWidthMinPixels: 1,
+  //     getPosition: (d) => [d.longitude, d.latitude],
+  //     getRadius: (d) => d.radius,
+  //     getFillColor: (rgb) => [rgb.red, rgb.green, rgb.blue],
+  //     getLineColor: (d) => [0, 0, 0],
+  //   }),
+  //   new ScatterplotLayer({
+  //     id: "scatterplot-layer",
+  //     data: props.user,
+  //     pickable: true,
+  //     opacity: 0.8,
+  //     stroked: true,
+  //     filled: true,
+  //     radiusScale: 10,
+  //     radiusMinPixels: 5,
+  //     radiusMaxPixels: 2000,
+  //     lineWidthMinPixels: 1,
+  //     getPosition: (d) => [d.Longitude, d.Latitude],
+  //     getRadius: 0.25,
+  //     getFillColor: (d) => [0, 140, 0],
+  //     getLineColor: (d) => [0, 0, 0],
+  //   }),
+  // ]);
   const [clickLatLng, setClick] = useState(null);
 
   const onClick = (event) => {
@@ -131,30 +184,30 @@ const Map = (props) => {
     setViewport(viewport, geocoderDefaultOverrides);
   };
 
-  const addGeofrence = () => {
-    console.log("clicked");
-    console.log(clickLatLng[0]);
-    console.log(clickLatLng[1]);
-    setLayers([
-      ...Layers,
-      new ScatterplotLayer({
-        id: "scatterplot-layer",
-        data: clickLatLng,
-        pickable: true,
-        opacity: 0.8,
-        stroked: true,
-        filled: true,
-        radiusScale: 1,
-        radiusMinPixels: 4,
-        radiusMaxPixels: 5,
-        lineWidthMinPixels: 1,
-        getPosition: [clickLatLng[0], clickLatLng[1]],
-        getRadius: 0.25,
-        getFillColor: (d) => [0, 140, 0],
-        getLineColor: (d) => [0, 0, 0],
-      }),
-    ]);
-  };
+  // const addGeofrence = () => {
+  //   console.log("clicked");
+  //   console.log(clickLatLng[0]);
+  //   console.log(clickLatLng[1]);
+  //   setLayers([
+  //     ...Layers,
+  //     new ScatterplotLayer({
+  //       id: "scatterplot-layer",
+  //       data: clickLatLng,
+  //       pickable: true,
+  //       opacity: 0.8,
+  //       stroked: true,
+  //       filled: true,
+  //       radiusScale: 1,
+  //       radiusMinPixels: 4,
+  //       radiusMaxPixels: 5,
+  //       lineWidthMinPixels: 1,
+  //       getPosition: [clickLatLng[0], clickLatLng[1]],
+  //       getRadius: 0.25,
+  //       getFillColor: (d) => [0, 140, 0],
+  //       getLineColor: (d) => [0, 0, 0],
+  //     }),
+  //   ]);
+  // };
 
   const mapSatStyle = "mapbox://styles/mapbox/satellite-v9";
   const mapStrStyle = "mapbox://styles/mapbox/streets-v9";
