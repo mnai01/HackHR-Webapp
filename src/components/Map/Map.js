@@ -29,15 +29,14 @@ const Map = (props) => {
   //   console.log("DDDDDDDDDDDDDDDDDDDDDDDD", props.data[0]);
   // }
 
+  // Adds rbg color to the objects returned using there current
+  // hex color that is provided
   if (props.data !== undefined && props.data.length !== 0) {
     try {
       props.data.map((res) => {
-        hexRgb(res.color);
-        rgb.push(hexRgb(res.color));
+        res.rgb = hexRgb(res.color);
       });
-      console.log("DDDDDDDDDDDDDDDDDDDDDDDD", rgb);
     } catch (error) {
-      rgb = { red: 255, blue: 0, green: 0 };
       console.log(error);
     }
   }
@@ -67,7 +66,7 @@ const Map = (props) => {
       lineWidthMinPixels: 1,
       getPosition: (d) => [d.longitude, d.latitude],
       getRadius: (d) => d.radius,
-      getFillColor: (rgb) => [rgb.red, rgb.green, rgb.blue],
+      getFillColor: (d) => [d.rgb.red, d.rgb.green, d.rgb.blue],
       getLineColor: (d) => [0, 0, 0],
     }),
     new ScatterplotLayer({
