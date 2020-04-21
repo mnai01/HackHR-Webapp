@@ -14,8 +14,8 @@ import axios from "axios";
 import classes from "./PlaceGeoFenceForm.module.css";
 import { HuePicker } from "react-color";
 
-const URL =
-  "https://cors-anywhere.herokuapp.com/https://hack-hr.herokuapp.com/api/fences/";
+const URL = "https://hack-hr.herokuapp.com/api/fences";
+// https://cors-anywhere.herokuapp.com/
 
 const PlaceGeoFenceForm = (props) => {
   const [Name, setName] = useState(null);
@@ -32,24 +32,34 @@ const PlaceGeoFenceForm = (props) => {
 
   const onSendPress = async () => {
     setLoading(true);
-    console.log(props.coords);
-    let color = props.color;
+    let color = String(props.color.hex);
     let radius = props.radius.rad;
     console.log(
-      URL +
-        `?company_id=2&fence_name=${Name}&description=${Description}&longitude=${props.coords[1]}&latitude=${props.coords[0]}&radius=${radius}&color=${color.hex}&capacity=${Limit}`
+      "https://hack-hr.herokuapp.com/api/fences",
+      {
+        company_id: 2,
+        fence_name: "Small Zone",
+        latitude: 65.123,
+        longitude: 10.322,
+        radius: 1005.22312,
+        description: "A nice safe zone",
+        color: color,
+        capacity: 5,
+      }
+      // URL +
+      //   `?company_id=2&fence_name=${Name}&description=${Description}&longitude=${props.coords[1]}&latitude=${props.coords[0]}&radius=${radius}&color=${color.hex}&capacity=${Limit}`
     );
     await axios
-      .post(
-        URL +
-          `?company_id=2&fence_name=${Name}&description=${Description}&longitude=${props.coords[1]}&latitude=${props.coords[0]}&radius=${radius}&color=${color.hex}&capacity=${Limit}`,
-        {
-          headers: {
-            "access-control-allow-origin": "*",
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        }
-      )
+      .post("https://hack-hr.herokuapp.com/api/fences", {
+        company_id: 2,
+        fence_name: Name,
+        latitude: props.coords[0],
+        longitude: props.coords[1],
+        radius: radius,
+        description: Description,
+        color: color,
+        capacity: Limit,
+      })
       .then((response) => {
         console.log(response);
         setLoading(false);
