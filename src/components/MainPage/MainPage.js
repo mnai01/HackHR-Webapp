@@ -5,22 +5,28 @@ import classes from "./MainPage.module.scss";
 import axios from "axios";
 
 const MainPage = (props) => {
-  const [GeofenceAPI, setGeofence] = useState({});
+  const [mapGeofenceAPI, setMapGeofence] = useState({});
+  const [ListGeofenceAPI, setListGeofence] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setInterval(function () {
-      _getRequest();
-    }, 50000);
+    _getRequest();
   }, []);
 
   const _getRequest = () => {
     axios
       .get(
-        "https://cors-anywhere.herokuapp.com/https://hack-hr.herokuapp.com/api/get"
+        "https://cors-anywhere.herokuapp.com/https://hack-hr.herokuapp.com/api/fences"
       )
       .then((res) => {
-        setGeofence(res.data.data);
+        console.log(res.data);
+        setListGeofence(res.data);
+        // setMapGeofence({
+        //   fence: res.data.map((res) => ({
+        //     latitude: res.latitude,
+        //     longitude: res.longitude,
+        //   })),
+        // });
         setLoaded(true);
       })
       .catch((err) => {
@@ -28,13 +34,23 @@ const MainPage = (props) => {
       });
   };
 
+  // setTimeout(_getRequest, 5 * 1000);
+
   return (
     <div className={classes.main_container}>
       <div className={classes.map_container}>
-        <Map user={props.People} data={GeofenceAPI} />
+        <Map user={props.People} data={ListGeofenceAPI} />
+
+        {/* {loaded ? (
+          <Map user={props.People} data={mapGeofenceAPI} />
+        ) : (
+          <h1>loading...</h1>
+        )} */}
       </div>
       <div className={classes.results_container}>
-        {loaded ? <Results data={GeofenceAPI} /> : <h1>loading...</h1>}
+        <Results data={ListGeofenceAPI} />
+
+        {/* {loaded ? <Results data={ListGeofenceAPI} /> : <h1>loading...</h1>} */}
       </div>
     </div>
   );
