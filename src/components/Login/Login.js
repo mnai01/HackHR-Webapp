@@ -37,8 +37,8 @@ const Login = (props) => {
   };
 
   const passwordChangeHandler = (e) => {
-    // console.log(e.target.value);
-    // setPassword(e.target.value);
+    console.log(e.target.value);
+    setPassword(e.target.value);
   };
 
   return (

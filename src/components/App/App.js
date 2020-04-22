@@ -123,26 +123,44 @@ function App() {
       Longitude: -73.427621,
     },
   ]);
-  Cookies.set("Company", Cookies.get("Company"));
+
+  const [Auth, setAuth] = useState({
+    token: Cookies.get("Token"),
+  });
+
+  const setAuthHandler = (token) => {
+    if (token == null) {
+      return;
+    }
+    setAuth({ token: token });
+  };
+
+  Cookies.set("Company", Cookies.get("Company")); // CAN DELETE, for fake auth
   return (
     <div>
-      {Cookies.get("Company") == "undefined" && Cookies.set("Company", "")}
+      {Cookies.get("Company") == "undefined" && Cookies.set("Company", "")}{" "}
+      {/*// CAN DELETE ABOVE, for fake auth*/}
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/">
-            {Cookies.get("Company") != "" ? (
-              <MainPage People={People} Geofence={Geofence} />
-            ) : (
+          {/* replace with auth.token here */}
+          {Cookies.get("Company") != "" ? (
+            <div>
+              <Route exact path="/">
+                <MainPage People={People} Geofence={Geofence} />
+              </Route>
+              <Route path="/newfence">
+                <AddGeofencePage />
+              </Route>
+            </div>
+          ) : (
+            <Route path="/">
               <MainLogReg />
-            )}
-          </Route>
-          <Route path="/newfence">
-            <AddGeofencePage />
-          </Route>
-          <Route path="/Login">
+            </Route>
+          )}
+          {/* <Route path="/Login">
             <MainLogReg />
-          </Route>
+          </Route> */}
         </Switch>
         <Footer />
       </Router>
