@@ -22,7 +22,6 @@ const Register = (props) => {
   };
 
   const registerHandler = () => {
-    Cookies.set("Company", CompanyName, { expires: 7 });
     // axios
     //   .post(url,{
     //   Company_name:CompanyName,
